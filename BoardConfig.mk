@@ -117,8 +117,7 @@ TARGET_KERNEL_SOURCE := kernel/lge/hammerhead
 ##TARGET_GCC_VERSION_EXP := 4.9
 
 # Custom Kernel Toolchain
-KERNEL_TOOLCHAIN_PREFIX := arm-linux-gnueabihf-
-KERNEL_TOOLCHAIN := "$(ANDROID_BUILD_TOP)/prebuilt/$(HOST_OS)-x86/toolchain/linaro-4.9-14.06/bin/"
+#TARGET_GCC_VERSION_ARM := 4.9-linaro
 
 # Graphite optimizations
 #SYMMETRY := true
