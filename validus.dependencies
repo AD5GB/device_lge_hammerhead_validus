@@ -1,9 +1,9 @@
 [
  {
    "remote":      "gh",
-   "repository":  "AD5GB/WickedElemental-N5",
+   "repository":  "CyanogenMod/android_kernel_lge_hammerhead",
    "target_path": "kernel/lge/hammerhead",
-   "branch":      "Wicked"
+   "branch":      "CM-12.1"
  },
  {
    "remote":      "gh",
