@@ -118,7 +118,7 @@ TARGET_KERNEL_SOURCE := kernel/lge/hammerhead
 
 # Custom Kernel Toolchain
 KERNEL_TOOLCHAIN_PREFIX := arm-eabi-
-KERNEL_TOOLCHAIN := "$(ANDROID_BUILD_TOP)/prebuilt/$(HOST_OS)-x86_64/toolchain/arm-cortex_a15-linux-gnueabihf/bin/"
+KERNEL_TOOLCHAIN := "$(ANDROID_BUILD_TOP)/prebuilt/$(HOST_OS)-x86_64/toolchain/arm-cortex_a15_linux-gnueabihf/bin/"
 
 # Graphite optimizations
 #SYMMETRY := true
