@@ -205,6 +205,3 @@ USE_MINIKIN := true
 
 # Include an expanded selection of fonts
 EXTENDED_FONT_FOOTPRINT := true
-
-# Enable transparent compression in the build
-TARGET_TRANSPARENT_COMPRESSION_METHOD := lz4
