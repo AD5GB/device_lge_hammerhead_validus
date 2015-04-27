@@ -113,8 +113,8 @@ TARGET_KERNEL_CONFIG := wicked_hammerhead_defconfig
 #TARGET_KERNEL_CONFIG := cyanogenmod_hammerhead_defconfig
 TARGET_KERNEL_SOURCE := kernel/lge/hammerhead
 
-# Alternate Toolchain
-##TARGET_GCC_VERSION_EXP := 4.9
+# ROM toolchain
+TARGET_GCC_VERSION := 4.9-uber
 
 # Custom Kernel Toolchain
 KERNEL_TOOLCHAIN_PREFIX := arm-eabi-
