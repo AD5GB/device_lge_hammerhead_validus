@@ -26,7 +26,7 @@ TARGET_NO_BOOTLOADER := true
 BOARD_KERNEL_BASE := 0x00000000
 BOARD_KERNEL_PAGESIZE := 2048
 
-BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.hardware=hammerhead user_debug=31 maxcpus=2 msm_watchdog_v2.enable=1 androidboot.bootdevice=msm_sdcc.1
+BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.hardware=hammerhead user_debug=31 maxcpus=2 msm_watchdog_v2.enable=1 androidboot.bootdevice=msm_sdcc.1 max_oc0=2956800 max_oc1=2956800 max_oc2=2956800 max_oc3=2956800 vdd_uv=0 l2_opt=1
 BOARD_MKBOOTIMG_ARGS := --ramdisk_offset 0x02900000 --tags_offset 0x02700000
 BOARD_KERNEL_IMAGE_NAME := zImage-dtb
 
@@ -109,8 +109,27 @@ BOARD_SEPOLICY_DIRS += \
        device/lge/hammerhead/sepolicy
 
 # Define kernel config for inline building
-TARGET_KERNEL_CONFIG := cyanogenmod_hammerhead_defconfig
+TARGET_KERNEL_CONFIG := wicked_hammerhead_defconfig
+#TARGET_KERNEL_CONFIG := cyanogenmod_hammerhead_defconfig
 TARGET_KERNEL_SOURCE := kernel/lge/hammerhead
+
+# ROM toolchain
+TARGET_GCC_VERSION := 4.9-uber
+
+# Custom Kernel Toolchain
+KERNEL_TOOLCHAIN_PREFIX := arm-eabi-
+KERNEL_TOOLCHAIN := "$(ANDROID_BUILD_TOP)/prebuilt/$(HOST_OS)-x86_64/toolchain/Linaro-4.9/bin/"
+
+# Graphite optimizations
+#SYMMETRY := true
+#GRAPHITE_OPTS := true
+#STRICT_ALIASING := false
+
+# Create changelog
+#VALIDUS_CHANGELOG := true
+
+# Multi-rom?
+NO_BLOCK_OTA := true
 
 # The list below is order dependent
 BOARD_SEPOLICY_UNION += \
@@ -154,6 +173,19 @@ TARGET_FORCE_HWC_FOR_VIRTUAL_DISPLAYS := true
 
 # QCOM PowerHAL
 TARGET_POWERHAL_VARIANT := qcom
+TARGET_POWERHAL_SET_INTERACTIVE_EXT := device/lge/hammerhead/power/power_ext.c
+
+# Recovery
+RECOVERY_FSTAB_VERSION := 2
+BOARD_HAS_NO_SELECT_BUTTON := true
+BOARD_USE_CUSTOM_RECOVERY_FONT := \"roboto_23x41.h\"
+BOARD_RECOVERY_SWIPE := true
+
+# Flags
+COMMON_GLOBAL_CFLAGS += -DNO_SECURE_DISCARD
+
+# Hardware
+BOARD_HARDWARE_CLASS := device/lge/hammerhead/cmhw
 
 USE_DEVICE_SPECIFIC_QCOM_PROPRIETARY:= true
 USE_DEVICE_SPECIFIC_CAMERA:= true
