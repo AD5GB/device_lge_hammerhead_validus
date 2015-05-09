@@ -177,7 +177,8 @@ QCamera3Stream::QCamera3Stream(uint32_t camHandle,
         mStreamInfoBuf(NULL),
         mStreamBufs(NULL),
         mBufDefs(NULL),
-        mChannel(channel)
+        mChannel(channel),
+        m_bActive(false)
 {
     mMemVtbl.user_data = this;
     mMemVtbl.get_bufs = get_bufs;
@@ -340,9 +341,10 @@ done:
 int32_t QCamera3Stream::start()
 {
     int32_t rc = 0;
-
-    mDataQ.init();
     rc = mProcTh.launch(dataProcRoutine, this);
+    if (rc == NO_ERROR) {
+        m_bActive = true;
+    }
     return rc;
 }
 
@@ -361,6 +363,7 @@ int32_t QCamera3Stream::stop()
 {
     int32_t rc = 0;
     rc = mProcTh.exit();
+    m_bActive = false;
     return rc;
 }
 
@@ -380,7 +383,8 @@ int32_t QCamera3Stream::processDataNotify(mm_camera_super_buf_t *frame)
 {
     ALOGV("%s: E\n", __func__);
     int32_t rc;
-    if (mDataQ.enqueue((void *)frame)) {
+    if (m_bActive) {
+        mDataQ.enqueue((void *)frame);
         rc = mProcTh.sendCmd(CAMERA_CMD_TYPE_DO_NEXT_JOB, FALSE, FALSE);
     } else {
         ALOGD("%s: Stream thread is not active, no ops here", __func__);
