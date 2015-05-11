@@ -9,7 +9,7 @@
    "remote":      "gh",
    "repository":  "CyanogenMod/android_device_qcom_common",
    "target_path": "device/qcom/common",
-   "branch":      "cm-12.1"
+   "branch":      "caf/cm-12.1"
  },
  {
    "remote":      "gh",
@@ -18,9 +18,9 @@
    "branch":      "cm-12.1"
  },
  {
-   "remote": "gh",
-   "repository": "TheMuppets/proprietary_vendor_lge",
+   "remote":      "gh",
+   "repository":  "TheMuppets/proprietary_vendor_lge",
    "target_path": "vendor/lge",
-   "branch": "cm-12.1"
+   "branch":      "cm-12.1"
  }
 ]
