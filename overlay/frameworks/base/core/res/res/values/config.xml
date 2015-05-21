@@ -332,6 +332,7 @@
     <integer name="config_screenBrightnessDoze">10</integer>
 
     <!-- Doze: force using accelerometer as pick up sensor -->
+    <add-resource type="bool" name="config_dozeUseAccelerometer"></add-resource>
     <bool name="config_dozeUseAccelerometer">true</bool>
 
 </resources>
